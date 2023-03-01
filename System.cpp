@@ -115,7 +115,7 @@ void System::loadMenu(){
 
 void System::loadFiles(const std::string& stations_file, const std::string& lines_file){
     fstream newfile;
-    newfile.open("data/stajalista.txt", ios::in);
+    newfile.open(stations_file, ios::in);
     string row;
     while(getline(newfile, row)){
         int id = stoi(row.substr(0,row.find(' ')));
@@ -133,7 +133,7 @@ void System::loadFiles(const std::string& stations_file, const std::string& line
         stations_[id] = station;
     }
     newfile.close();
-    newfile.open("data/linije.txt", ios::in);
+    newfile.open(lines_file, ios::in);
     while(getline(newfile, row)){
         Lines* line = new Lines(row.substr(0,row.find(' ')));
         string edit= row.substr(row.find(' ')+1);
